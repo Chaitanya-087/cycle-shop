@@ -1,0 +1,21 @@
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>quantity</th>
+            <th>username</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of orders">
+            <td>{{order.id}}</td>
+            <td>{{order.cycle.brand}}</td>
+            <td>{{order.cycle.price * order.quantity}}</td>
+            <td>{{order.quantity}}</td>
+            <td>{{order.user.name}}</td>
+        </tr>
+    </tbody>
+</table>

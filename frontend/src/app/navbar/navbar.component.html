@@ -1,0 +1,38 @@
+<header class="wrapper">
+  <div class="navbar">
+    <h3>Cycles</h3>
+    <nav>
+      <ul class="nav-items">
+        <li>
+          <a routerLink="/cycles" class="nav-link" routerLinkActive="active">Cycles</a>
+        </li>
+        <li>
+          <a routerLink="/cart" class="nav-link" routerLinkActive="active">Cart</a>
+        </li>
+        <li *hasRoles="[roles.USER]">
+          <a routerLink="/placed-orders" class="nav-link" routerLinkActive="active">Orders</a>
+        </li>
+        <li *hasRoles="[roles.ADMIN]">
+          <a routerLink="/orders" class="nav-link" routerLinkActive="active">Orders</a>
+        </li>
+        <!-- <li *ngIf="!(authService.isLoggedIn | async); else logoutLink">
+          <a routerLink="/login" class="nav-link" routerLinkActive="active">Login</a>
+        </li> -->
+        <li *ngIf="auth.isAuthenticated$ | async; else loginLink">
+          <app-logout-button></app-logout-button>
+        </li>
+      </ul>
+    </nav>
+    <ng-template #loginLink>
+      <li>
+        <app-login-button></app-login-button>
+        <!-- <a
+          class="nav-link"
+          (click)="authService.logout()"
+          routerLinkActive="active"
+          >Logout</a
+        > -->
+      </li>
+    </ng-template>
+  </div>
+</header>

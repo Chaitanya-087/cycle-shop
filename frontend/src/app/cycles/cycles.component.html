@@ -1,0 +1,43 @@
+<h3>Rent Cycle</h3>
+<div *ngIf="auth.isLoading$ | async">
+  <p>Loading...</p>
+</div>
+<table *ngIf="auth.isAuthenticated$ | async">
+  <thead>
+    <tr>
+      <th>Cycle ID</th>
+      <th>Brand</th>
+      <th>Price</th>
+      <th>In Stock</th>
+      <th *hasRoles="[roles.USER,roles.ADMIN]">action</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr  *ngFor="let cycle of data">
+      <td>{{ cycle.id }}</td>
+      <td>{{ cycle.brand }}</td>
+      <td>{{cycle.price}}</td>
+      <td>{{ cycle.stock }}</td>
+      <td *hasRoles="[roles.USER]">
+        <input type="number" min="1" [max]="cycle.stock" value="1" #quantity ngModel >
+        <button (click)="addToCart(cycle.id, quantity.valueAsNumber)" appAuthClick>
+          Add to Cart
+        </button>
+      </td>
+      <td *hasRoles="[roles.ADMIN]">
+        <input
+          type="number"
+          id="restock"
+          name="quantity"
+          #quantity
+          ngModel
+          min="1"
+        />
+        <button (click)="restockCycle(cycle.id, quantity.valueAsNumber)">
+          submit
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

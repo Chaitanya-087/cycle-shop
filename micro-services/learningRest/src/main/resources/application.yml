@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: "jdbc:mysql://localhost:3306/cycleShop"
+    username: chaitanya
+    password: chaitanya
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+jwt:
+  private.key: classpath:app.key
+  public.key: classpath:app.pub

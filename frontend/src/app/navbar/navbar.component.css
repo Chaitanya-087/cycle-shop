@@ -1,0 +1,35 @@
+.wrapper {
+    height: 60px;
+    background-color: white;
+    border-bottom: 1px solid #e7e7e7; 
+    display: flex;
+    align-items: center; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 90%;
+    margin: auto;  
+}
+
+.nav-items {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.active {
+    /* background-color: #007bff; */
+    color: #007bff;
+}

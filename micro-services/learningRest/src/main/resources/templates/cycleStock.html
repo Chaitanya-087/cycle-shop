@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Cycle Stand Stats</title>
+  </head>
+
+  <body>
+    <h3>Rent Cycle</h3>
+
+    <table id="rentCycleTable">
+      <thead>
+        <tr>
+          <th>Cycle ID</th>
+          <th>Brand</th>
+          <th>In Stock</th>
+          <th>Borrow</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Return Cycle</h3>
+
+    <table id="returnCycleTable">
+      <thead>
+        <tr>
+          <th>Cycle ID</th>
+          <th>Brand</th>
+          <th>Return</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <form id="restockForm">
+      <label for="branddropdown">Select brand name</label>
+      <select id="branddropdown" name="brandId"></select>
+      <label for="restock">Restock Quantity</label>
+      <input type="number" id="restock" name="restockQuantity" min="1" required />
+      <input type="submit" value="Restock" />
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

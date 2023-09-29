@@ -1,0 +1,39 @@
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Brand</th>
+      <th>quantity</th>
+      <th>Total Price</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+      <tr *ngFor="let cartItem of cart?.cartItems">
+        <td>{{ cartItem.id }}</td>
+        <td>{{ cartItem.cycle.brand }}</td>
+        <td>
+          <div class="center">
+            <p>
+              {{ cartItem.quantity }}
+            </p>
+            <button class="btn-decrement" (click)="removeFromCart(cartItem.cycle.id)">-</button>
+          </div>
+        </td>
+        <td>{{ cartItem.totalPrice }}</td>
+        <td>
+          <div class="center">
+              <button class="btn-checkout" (click)="checkoutFromCart(cartItem.id)">checkout</button>
+              <button class="btn-remove" (click)="removeFromCart(cartItem.cycle.id,cartItem.quantity)">remove</button>
+          </div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+<div class="cart-details">
+  <p>cart items: {{ cart?.totalQuantity }}</p>
+  <p>cumulative price: {{ cart?.totalPrice }}</p>
+  <button class="btn-checkout" (click)="checkoutAll()">checkout all</button>
+</div>
