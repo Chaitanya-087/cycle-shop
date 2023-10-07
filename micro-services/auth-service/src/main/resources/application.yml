@@ -5,7 +5,7 @@ spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:mysql://localhost:3306/UserAccountsDB
+    url: jdbc:mysql://localhost:3306/UsersDB
     username: chaitanya
     password: chaitanya
 
