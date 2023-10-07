@@ -1,4 +1,4 @@
-package com.spring.learningRest; // Adjust the package name as needed
+package com.spring.learningRest;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.lang.Nullable;

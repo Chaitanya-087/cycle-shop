@@ -1,15 +1,17 @@
 spring:
   datasource:
-    url: "jdbc:mysql://localhost:3306/cycleShop"
+    url: "jdbc:mysql://localhost:3306/cycleshop"
     username: chaitanya
     password: chaitanya
   jpa:
     properties:
       hibernate:
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
         dialect: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
-    show-sql: false
+    show-sql: true
 
 jwt:
   private.key: classpath:app.key
