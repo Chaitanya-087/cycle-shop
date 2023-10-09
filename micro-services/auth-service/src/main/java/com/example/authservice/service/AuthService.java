@@ -1,14 +1,15 @@
 package com.example.authservice.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import com.example.authservice.config.CustomUserDetails;
 import com.example.authservice.entity.User;
 import com.example.authservice.repository.UserRepository;
 
-@Component
+@Service
 public class AuthService {
 
     @Autowired
@@ -27,7 +28,9 @@ public class AuthService {
     }
 
     public String generateToken(String username) {
-        return jwtService.generateToken(username);
+        User user = userRepository.findByUsername(username).get();
+        UserDetails userDetails = new CustomUserDetails(user);
+        return jwtService.generateToken(userDetails);
     }
 
     public void validateToken(String token) {

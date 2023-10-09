@@ -1,8 +1,10 @@
 package com.example.authservice.config;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.example.authservice.entity.User;
@@ -11,15 +13,17 @@ public class CustomUserDetails implements UserDetails {
 
     private String username;
     private String password;
+    private List<GrantedAuthority> authorities;
 
     public CustomUserDetails(User user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
+        this.authorities = List.of(new SimpleGrantedAuthority(user.getRole()));
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override

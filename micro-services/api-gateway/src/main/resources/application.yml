@@ -1,40 +1,49 @@
 server:
-  port: 8671
+    port: 8671
+    forward-headers-strategy: framework
 
 spring:
-  application:
-    name: api-gateway
-  cloud:
-    gateway:
-      routes:
-        - id: hello-service
-          uri: lb://hello-service
-          predicates:
-            - Path=/hello/**
-        - id: testing-service
-          uri: lb://testing-service
-          predicates:
-            - Path=/testing/**
-        - id: cycle-service
-          uri: lb://cycle-service
-          predicates:
-            - Path=/api/cycles/**
+    application:
+        name: api-gateway
+    cloud:
+        gateway:
+            routes:
+                - id: auth-service
+                  uri: lb://auth-service
+                  predicates:
+                      - Path=/api/auth/**
+
+                - id: hello-service
+                  uri: lb://hello-service
+                  predicates:
+                      - Path=/hello/**
+
+                - id: testing-service
+                  uri: lb://testing-service
+                  predicates:
+                      - Path=/testing/**
+
+                - id: cycle-service
+                  uri: lb://cycle-service
+                  predicates:
+                      - Path=/api/v1/cycles/**
+                  filters:
+                      - AuthenticationFilter
 
 eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:9090/eureka/
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 20
+    instance:
+        hostname: localhost
+        lease-renewal-interval-in-seconds: 10
+        lease-expiration-duration-in-seconds: 20
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:9090/eureka/
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-    jmx:
-      exposure:
-        include: "*"
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+        jmx:
+            exposure:
+                include: "*"

@@ -5,7 +5,7 @@ spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:mysql://localhost:3306/UsersDB
+    url: jdbc:mysql://localhost:3306/usersdb
     username: chaitanya
     password: chaitanya
 
@@ -22,4 +22,12 @@ eureka:
       defaultZone: http://localhost:9090/eureka/
   instance:
     hostname: localhost
-    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"

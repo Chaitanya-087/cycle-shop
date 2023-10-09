@@ -1,42 +1,50 @@
 server:
-  port: 8083
+    port: 8083
 
 spring:
-  application:
-    name: cycle-service
-  datasource:
-    url: "jdbc:mysql://localhost:3306/cycleshop"
-    username: chaitanya
-    password: chaitanya
-  jpa:
-    properties:
-      hibernate:
-        naming:
-          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-        dialect: org.hibernate.dialect.MySQLDialect
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+    application:
+        name: cycles-service
+    datasource:
+        url: "jdbc:mysql://localhost:3306/cycleshop"
+        username: chaitanya
+        password: chaitanya
+    jpa:
+        properties:
+            hibernate:
+                naming:
+                    physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+                dialect: org.hibernate.dialect.MySQLDialect
+        hibernate:
+            ddl-auto: update
+        show-sql: true
 
 jwt:
-  private.key: classpath:app.key
-  public.key: classpath:app.pub
+    private.key: classpath:app.key
+    public.key: classpath:app.pub
 
-eureka:
-  instance:
-    hostname: localhost
-    prefer-ip-address: true
-    lease-renewal-interval-in-seconds: 10
-    lease-expiration-duration-in-seconds: 20
-  client:
-    service-url:
-      defaultZone: http://localhost:9090/eureka/
+# swagger-ui custom path
+# springdoc:
+#     swagger-ui:
+#         path: /swagger-ui.html
+    # show-actuator: true
+
+# eureka:
+#   instance:
+#     hostname: localhost
+#     lease-renewal-interval-in-seconds: 10
+#     lease-expiration-duration-in-seconds: 20
+#   client:
+#     service-url:
+#       defaultZone: http://localhost:9090/eureka/
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+        jmx:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: always
