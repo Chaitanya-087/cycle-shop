@@ -64,8 +64,7 @@ public class BasicConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .cors(cors ->  cors.configurationSource(corsConfig))
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/api/cycles/list", "/api/auth/**", "/api/cycles/**").permitAll()
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/auth/**", "/api/cycles/**","/v3/api-docs/**","/swagger-ui.html","/swagger-ui/**","/actuator/**").permitAll())
                 .oauth2ResourceServer(
                         oauth2ResourceServer -> oauth2ResourceServer.jwt(jwt -> jwt.decoder(jwtDecoder())))
                 .sessionManagement((session) -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

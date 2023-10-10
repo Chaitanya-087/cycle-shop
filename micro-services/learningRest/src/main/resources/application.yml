@@ -17,8 +17,8 @@ spring:
     show-sql: false
 
 jwt:
-  private.key: classpath:app.key
-  public.key: classpath:app.pub
+    private.key: classpath:app.key
+    public.key: classpath:app.pub
 
 # eureka:
 #   instance:
@@ -31,10 +31,13 @@ jwt:
 #       defaultZone: http://localhost:9090/eureka/
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+    endpoints:
+        web:
+            exposure:
+                include: "*"
+        jmx:
+            exposure:
+                include: "*"
+    endpoint:
+        health:
+            show-details: always

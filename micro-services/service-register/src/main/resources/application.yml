@@ -2,6 +2,10 @@ server:
   port: 9090
 
 eureka:
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
   client:
       register-with-eureka: false
       fetch-registry: false
@@ -12,4 +16,11 @@ spring:
   application:
     name: service-register
 
-    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: "*"
