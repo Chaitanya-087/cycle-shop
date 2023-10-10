@@ -2,10 +2,10 @@
 #   port: 8083
 
 spring:
-  application:
-    name: cycle-service
+  # application:
+  #   name: cycle-service
   datasource:
-    url: jdbc:mysql://mysqldb:3306/cycleShop
+    url: "jdbc:mysql://localhost:3306/cycleShop"
     username: root
     password: chaitanya
   jpa:

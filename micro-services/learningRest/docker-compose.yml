@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  api_service:
+    container_name: api_service
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    restart: always
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: chaitanya
+      MYSQL_DATABASE: cycleShop
+      MYSQL_USER: chaitanya
+      MYSQL_PASSWORD: chaitanya
+
+    volumes:
+      - ./mysql:/var/lib/mysql
+volumes:
+  mysql:
